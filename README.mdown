@@ -1,1 +1,16 @@
-basic web app 
+#Gravity
+
+This project is intended to be the first of many web apps aimed at the ipad/iphone.
+This project is in fact a ported version of a processing sketch I made a while ago for android in processing.
+
+Things I need to do..
+
+- detect chrome and change orientation results accordingly (currently sideways on chrome).
+- disable touch drag on ipad.
+- look into disabling/counteracting default rotation on ipad.
+- double check application cache.
+- refactor code.
+- get balls draggable and throwable with mouse then with touch.
+
+Anders
+^__^
