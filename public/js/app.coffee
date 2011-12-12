@@ -45,6 +45,7 @@ $ ->
   $(window).bind "deviceorientation", window.deviceOrientationHandler
   $(body).bind "touchmove", window.blockIosScroll
   $(body).bind "orientationchange", window.blockRotation
+  $(body).bind "keypress", window.keyPressHandler
 
 window.deviceOrientationHandler = (event)->
   window.processing.xgravity = - event.originalEvent.beta / 40
@@ -53,3 +54,6 @@ window.deviceOrientationHandler = (event)->
 window.blockIosScroll = (event)-> event.preventDefault()
 
 window.blockRotation = (event)-> alert window.orientation
+
+window.keyPressHandler = (event)->
+  

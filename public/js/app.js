@@ -95,7 +95,8 @@
     });
     $(window).bind("deviceorientation", window.deviceOrientationHandler);
     $(body).bind("touchmove", window.blockIosScroll);
-    return $(body).bind("orientationchange", window.blockRotation);
+    $(body).bind("orientationchange", window.blockRotation);
+    return $(body).bind("keypress", window.keyPressHandler);
   });
 
   window.deviceOrientationHandler = function(event) {
@@ -110,3 +111,5 @@
   window.blockRotation = function(event) {
     return alert(window.orientation);
   };
+
+  window.keyPressHandler = function(event) {};
