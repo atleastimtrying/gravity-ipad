@@ -17,22 +17,6 @@ window.sketch = (p5) ->
     p5.rect 0, 0, p5.width, p5.height
     ball.draw() for ball in @balls
 
-  p5.mousePressed = ->
-    ball.pressed() for ball in @balls
-
-  p5.touchStart = ->
-    ball.pressed() for ball in @balls
-
-  p5.mouseReleased = ->
-    @oneSelected = false
-    ball.released() for ball in @balls
-  p5.touchEnd = ->
-    @oneSelected = false
-    ball.released() for ball in @balls
-
-  p5.keypressed = ->
-    ball.setAcc(0,0) for ball in @balls
-
 $ ->
   canvas = $("canvas")
   window.processing = new Processing canvas[0], window.sketch
@@ -43,7 +27,7 @@ $ ->
     }
     processing.size $(window).width(), $(window).height() 
   $(window).bind "deviceorientation", window.deviceOrientationHandler
-  $(body).bind "touchmove", window.blockIosScroll
+  $('canvas').bind 'touchmove', window.blockIosScroll
   $(body).bind "orientationchange", window.blockRotation
   $(body).bind "keypress", window.keyPressHandler
 
@@ -51,9 +35,9 @@ window.deviceOrientationHandler = (event)->
   window.processing.xgravity = - event.originalEvent.beta / 40
   window.processing.ygravity = event.originalEvent.gamma / 40
 
-window.blockIosScroll = (event)-> event.preventDefault()
+window.blockIosScroll = (e)-> e.preventDefault()
 
-window.blockRotation = (event)-> alert window.orientation
+window.blockRotation = (event)-> console.log window.orientation
 
 window.keyPressHandler = (event)->
   

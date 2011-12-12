@@ -16,7 +16,7 @@
       this.xgravity = 0;
       return this.ygravity = 0.1;
     };
-    p5.draw = function() {
+    return p5.draw = function() {
       var ball, _i, _len, _ref, _results;
       p5.fill(0, 0, 0, 1);
       p5.rect(0, 0, p5.width, p5.height);
@@ -25,58 +25,6 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         ball = _ref[_i];
         _results.push(ball.draw());
-      }
-      return _results;
-    };
-    p5.mousePressed = function() {
-      var ball, _i, _len, _ref, _results;
-      _ref = this.balls;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ball = _ref[_i];
-        _results.push(ball.pressed());
-      }
-      return _results;
-    };
-    p5.touchStart = function() {
-      var ball, _i, _len, _ref, _results;
-      _ref = this.balls;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ball = _ref[_i];
-        _results.push(ball.pressed());
-      }
-      return _results;
-    };
-    p5.mouseReleased = function() {
-      var ball, _i, _len, _ref, _results;
-      this.oneSelected = false;
-      _ref = this.balls;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ball = _ref[_i];
-        _results.push(ball.released());
-      }
-      return _results;
-    };
-    p5.touchEnd = function() {
-      var ball, _i, _len, _ref, _results;
-      this.oneSelected = false;
-      _ref = this.balls;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ball = _ref[_i];
-        _results.push(ball.released());
-      }
-      return _results;
-    };
-    return p5.keypressed = function() {
-      var ball, _i, _len, _ref, _results;
-      _ref = this.balls;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ball = _ref[_i];
-        _results.push(ball.setAcc(0, 0));
       }
       return _results;
     };
@@ -94,7 +42,7 @@
       return processing.size($(window).width(), $(window).height());
     });
     $(window).bind("deviceorientation", window.deviceOrientationHandler);
-    $(body).bind("touchmove", window.blockIosScroll);
+    $('canvas').bind('touchmove', window.blockIosScroll);
     $(body).bind("orientationchange", window.blockRotation);
     return $(body).bind("keypress", window.keyPressHandler);
   });
@@ -104,12 +52,12 @@
     return window.processing.ygravity = event.originalEvent.gamma / 40;
   };
 
-  window.blockIosScroll = function(event) {
-    return event.preventDefault();
+  window.blockIosScroll = function(e) {
+    return e.preventDefault();
   };
 
   window.blockRotation = function(event) {
-    return alert(window.orientation);
+    return console.log(window.orientation);
   };
 
   window.keyPressHandler = function(event) {};

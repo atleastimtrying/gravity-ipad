@@ -6,9 +6,8 @@ This project is in fact a ported version of a processing sketch I made a while a
 Things I need to do..
 
 - detect chrome and change orientation results accordingly (currently sideways on chrome).
-- disable touch drag on ipad.
 - look into disabling/counteracting default rotation on ipad.
-- double check application cache.
+- sort out offline application cache.
 - test & refactor code.
 - get balls draggable and throwable with mouse then with touch.
 
