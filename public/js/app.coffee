@@ -43,7 +43,13 @@ $ ->
     }
     processing.size $(window).width(), $(window).height() 
   $(window).bind "deviceorientation", window.deviceOrientationHandler
+  $(body).bind "touchmove", window.blockIosScroll
+  $(body).bind "orientationchange", window.blockRotation
 
 window.deviceOrientationHandler = (event)->
   window.processing.xgravity = - event.originalEvent.beta / 40
-  window.processing.ygravity =event.originalEvent.gamma / 40
+  window.processing.ygravity = event.originalEvent.gamma / 40
+
+window.blockIosScroll = (event)-> event.preventDefault()
+
+window.blockRotation = (event)-> alert window.orientation

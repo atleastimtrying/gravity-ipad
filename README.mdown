@@ -9,7 +9,7 @@ Things I need to do..
 - disable touch drag on ipad.
 - look into disabling/counteracting default rotation on ipad.
 - double check application cache.
-- refactor code.
+- test & refactor code.
 - get balls draggable and throwable with mouse then with touch.
 
 Anders

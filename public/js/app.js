@@ -1,4 +1,4 @@
-(function() {
+
   window.sketch = function(p5) {
     p5.setup = function() {
       var count;
@@ -81,6 +81,7 @@
       return _results;
     };
   };
+
   $(function() {
     var canvas;
     canvas = $("canvas");
@@ -92,10 +93,20 @@
       });
       return processing.size($(window).width(), $(window).height());
     });
-    return $(window).bind("deviceorientation", window.deviceOrientationHandler);
+    $(window).bind("deviceorientation", window.deviceOrientationHandler);
+    $(body).bind("touchmove", window.blockIosScroll);
+    return $(body).bind("orientationchange", window.blockRotation);
   });
+
   window.deviceOrientationHandler = function(event) {
     window.processing.xgravity = -event.originalEvent.beta / 40;
     return window.processing.ygravity = event.originalEvent.gamma / 40;
   };
-}).call(this);
+
+  window.blockIosScroll = function(event) {
+    return event.preventDefault();
+  };
+
+  window.blockRotation = function(event) {
+    return alert(window.orientation);
+  };
